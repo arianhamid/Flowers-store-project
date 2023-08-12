@@ -1,10 +1,29 @@
 import React from "react";
-import { Outlet } from "react-router-dom";
-
+import { Link, Outlet } from "react-router-dom";
+import image from "../logo.svg";
 const Navbar = () => {
   return (
     <>
-      <div>Hello From Navbar</div>
+      <nav className="navbar navbar-expand-sm bg-primary navbar-dark px-sm-5">
+        {/* https://www.iconfinder.com/icons/1243689/call_phone_icon Creative
+        Commons (Attribution 3.0 Unported);
+      https://www.iconfinder.com/Makoto_msk */}
+        <Link to="/">
+          <img src={image} alt="store" className="navbar-brand" />
+        </Link>
+        <ul className="navbar-nav align-item-center">
+          <li className="nav-item ml-5">
+            <Link to="/" className="nav-link">
+              Products
+            </Link>
+          </li>
+        </ul>
+        <Link to="cart" className="ml-auto">
+          <button>
+            <i className="fas fa-cart-plus"> my Cart</i>
+          </button>
+        </Link>
+      </nav>
       <Outlet />
     </>
   );
