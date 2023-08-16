@@ -7,17 +7,11 @@ const AppProvider = ({ children }) => {
   const [products, setProducts] = useState(storeProducts);
   const [detail, setDetail] = useState(detailProduct);
 
-  function addToCart() {
-    console.log("hello from add to cart");
-  }
-  function handleDetail() {
-    console.log("hello from detail");
-  }
+  function addToCart() {}
+  function handleDetail() {}
 
   return (
-    <AppContext.Provider
-      value={{ products, detail, handleDetail, addToCart }}
-    >
+    <AppContext.Provider value={{ products, detail, handleDetail, addToCart }}>
       {children}
     </AppContext.Provider>
   );

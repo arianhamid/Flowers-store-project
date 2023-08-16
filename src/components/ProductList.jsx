@@ -5,7 +5,6 @@ import { useGlobalContext } from "../context";
 
 const ProductList = () => {
   const { products, detail, addToCart, handleDetail } = useGlobalContext();
-  console.log(products, detail);
   addToCart();
   handleDetail();
   return (

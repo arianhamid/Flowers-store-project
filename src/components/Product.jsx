@@ -1,6 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { styled } from "styled-components";
+import PropTypes from "prop-types";
 
 const Product = ({ id, title, img, price, inCart }) => {
   return (
@@ -20,7 +21,7 @@ const Product = ({ id, title, img, price, inCart }) => {
                 in Cart
               </p>
             ) : (
-              <i class="fas fa-cart-plus"></i>
+              <i className="fas fa-cart-plus"></i>
             )}
           </button>
         </div>
@@ -35,6 +36,14 @@ const Product = ({ id, title, img, price, inCart }) => {
     </ProductWrapper>
   );
 };
+Product.propTypes = {
+  id: PropTypes.number,
+  title:PropTypes.string,
+  img:PropTypes.string,
+  price:PropTypes.number,
+  inCart:PropTypes.bool
+};
+
 const ProductWrapper = styled.div`
   .card {
     border-color: transparent;
