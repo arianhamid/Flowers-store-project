@@ -4,9 +4,8 @@ import Title from "./Title";
 import { useGlobalContext } from "../context";
 
 const ProductList = () => {
-  const { products, detail, addToCart, handleDetail } = useGlobalContext();
-  addToCart();
-  handleDetail();
+  const { products, addToCart, handleDetail } =
+    useGlobalContext();
   return (
     <>
       <div className="py-5">

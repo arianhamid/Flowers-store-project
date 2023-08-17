@@ -20,3 +20,6 @@ body {
 .text-blue {
   color: var(--mainBlue);
 }
+
+.text-slanted {
+}

@@ -7,6 +7,7 @@ import Default from "./components/Default";
 import Cart from "./components/Cart";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 
+
 function App() {
   return (
     <>
