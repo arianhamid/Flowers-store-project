@@ -2,14 +2,16 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { styled } from "styled-components";
 import PropTypes from "prop-types";
+import { useGlobalContext } from "../context";
 
 const Product = ({ id, title, img, price, inCart }) => {
+  const {handleDetail}=useGlobalContext()
   return (
     <ProductWrapper className="col-9 mx-auto col-md-6 col-xl-3 my-3">
       <div className="card">
         <div
           className="image-container p-5"
-          onClick={() => console.log("clicked from image container")}
+          onClick={() => handleDetail(id)}
         >
           <Link to="/details">
             <img src={img} alt="product" className="card-img-top" />

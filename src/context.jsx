@@ -7,15 +7,17 @@ const AppProvider = ({ children }) => {
   const [products, setProducts] = useState(storeProducts);
   const [detail, setDetail] = useState(detailProduct);
 
-  function addToCart(id) {console.log(`hello from add to cart.id is: ${id}`)}
+  function addToCart(id) {
+    console.log(`hello from add to cart.id is: ${id}`);
+  }
 
-  function handleDetail() {}
-
+  function handleDetail(id) {
+    const detailProduct = products.find((product) => product.id == id);
+    setDetail(detailProduct);
+  }
 
   return (
-    <AppContext.Provider
-      value={{ products, detail, handleDetail, addToCart }}
-    >
+    <AppContext.Provider value={{ products, detail, handleDetail, addToCart }}>
       {children}
     </AppContext.Provider>
   );

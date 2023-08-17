@@ -4,7 +4,7 @@ import { ButtonContainer } from "./Button";
 import { Link } from "react-router-dom";
 
 const Details = () => {
-  const { detail, products, addToCart } = useGlobalContext();
+  const { detail, addToCart } = useGlobalContext();
   const { id, company, img, info, title, price, inCart } = detail;
 
   return (
