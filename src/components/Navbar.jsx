@@ -11,9 +11,13 @@ const Navbar = () => {
         Commons (Attribution 3.0 Unported);
         https://www.iconfinder.com/Makoto_msk */}
         <Link to="/">
-          <img src={image} alt="store" className="navbar-brand" />
+          <img
+            src={image}
+            alt="store"
+            className="navbar-brand"
+          />
         </Link>
-        <ul className="navbar-nav align-item-center">
+        <ul className="navbar-nav align-items-center">
           <li className="nav-item ml-5">
             <Link to="/" className="nav-link">
               products
@@ -23,7 +27,7 @@ const Navbar = () => {
         <Link to="cart" className="ms-auto">
           <ButtonContainer>
             <span className="me-2">
-              <i className="fas fa-cart-plus" />
+              <i className="fa fa-cart-plus" aria-hidden="true" />
             </span>
             my cart
           </ButtonContainer>

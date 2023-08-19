@@ -8,7 +8,13 @@ const AppProvider = ({ children }) => {
   const [detail, setDetail] = useState(detailProduct);
 
   function addToCart(id) {
-    console.log(`hello from add to cart.id is: ${id}`);
+    const newProduct = products.map((product) => {
+      if (product.id == id) {
+        product.inCart = !product.inCart;
+      }
+      return product;
+    });
+    setProducts(newProduct);
   }
 
   function handleDetail(id) {

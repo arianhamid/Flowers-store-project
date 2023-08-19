@@ -5,18 +5,19 @@ import PropTypes from "prop-types";
 import { useGlobalContext } from "../context";
 
 const Product = ({ id, title, img, price, inCart }) => {
-  const {handleDetail}=useGlobalContext()
+  const {handleDetail,addToCart}=useGlobalContext()
   return (
-    <ProductWrapper className="col-9 mx-auto col-md-6 col-xl-3 my-3">
+    <ProductWrapper className="col-9 col-md-6 col-xl-3 mx-auto my-3">
       <div className="card">
-        <div
-          className="image-container p-5"
-          onClick={() => handleDetail(id)}
-        >
+        <div className="image-container p-5" onClick={() => handleDetail(id)}>
           <Link to="/details">
             <img src={img} alt="product" className="card-img-top" />
           </Link>
-          <button className="cart-btn" disabled={inCart ? true : false}>
+          <button
+            onClick={() => addToCart(id)}
+            className="cart-btn"
+            disabled={inCart ? true : false}
+          >
             {inCart ? (
               <p className="text-capitalize mb-0" disabled>
                 {" "}

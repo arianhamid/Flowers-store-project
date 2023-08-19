@@ -4,7 +4,7 @@ import Title from "./Title";
 import { useGlobalContext } from "../context";
 
 const ProductList = () => {
-  const { products, addToCart } =
+  const { products } =
     useGlobalContext();
   return (
     <>
