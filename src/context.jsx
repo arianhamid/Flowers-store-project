@@ -1,10 +1,10 @@
-import React, { createContext, useContext, useState } from "react";
+import React, { createContext, useContext, useEffect, useState } from "react";
 import { storeProducts, detailProduct } from "./data";
 
 const AppContext = createContext();
 
 const AppProvider = ({ children }) => {
-  const [products, setProducts] = useState(storeProducts);
+  const [products, setProducts] = useState([]);
   const [detail, setDetail] = useState(detailProduct);
   const [cart, setCart] = useState([]);
   const [modalOpen, setModalOpen] = useState(false);
@@ -13,13 +13,32 @@ const AppProvider = ({ children }) => {
   const [cartTax, setCartTax] = useState(0);
   const [cartTotal, setCartTotal] = useState(0);
 
+  useEffect(() => {
+    initializeProductsState();
+  }, []);
+
+  function initializeProductsState() {
+    const initialProducts = storeProducts.reduce((total, product) => {
+      const singleItem = { ...product };
+      return (total = [...total, singleItem]);
+    }, []);
+
+    // -- you can use forEach method instead of reduce method
+    // let tempProducts = [];
+    // storeProducts.forEach((product) => {
+    //   const singleItem = { ...product };
+    //   tempProducts = [...tempProducts, singleItem];
+    // });
+
+    setProducts(initialProducts);
+  }
+
   function addToCart(id) {
     const newProducts = products.map((product) => {
       if (product.id == id) {
         product.inCart = true;
         product.count = 1;
-        const price = product.price;
-        product.total = price;
+        product.total = product.price * product.count;
         setCart([...cart, product]);
       }
       return product;
@@ -70,14 +89,14 @@ const AppProvider = ({ children }) => {
     const newCart = cart.filter((product) => {
       return product.id !== id;
     });
-
     setCart(newCart);
   }
 
   function clearCart() {
     setCart([]);
-    setProducts(storeProducts);
+    initializeProductsState();
   }
+
   return (
     <AppContext.Provider
       value={{
