@@ -13,10 +13,23 @@ const AppProvider = ({ children }) => {
   const [cartTax, setCartTax] = useState(0);
   const [cartTotal, setCartTotal] = useState(0);
 
-  // this effect runs only at the start and setProducts to a copy of storeProducts from data.jsx and thats because when we initiate a state with a reference values like arrays or objects it cause to changing the storeProducts when we change products state  
+  // get Products and Cart from LocalStorage
   useEffect(() => {
-    initializeProductsState();
+    const localProducts = JSON.parse(localStorage.getItem("products"));
+    localProducts ? setProducts(localProducts) : initializeProductsState();
+
+    const localCart = JSON.parse(localStorage.getItem("cart"));
+    localCart ? setCart(localCart) : setCart([]);
+    console.log(JSON.parse(localStorage.getItem("cart")));
   }, []);
+
+  // set Products and Cart to LocalStorage
+  useEffect(() => {
+    localStorage.setItem("products", JSON.stringify(products));
+    localStorage.setItem("cart", JSON.stringify(cart));
+  }, [products, cart]);
+
+  // making a copy from storeProducts because when we initiate a state with a reference values like arrays or objects(even objects thats belong to an array) it cause to changing the storeProducts when we change products state
   function initializeProductsState() {
     const initialProducts = storeProducts.reduce((total, product) => {
       const singleItem = { ...product };
@@ -31,7 +44,6 @@ const AppProvider = ({ children }) => {
     setProducts(initialProducts);
   }
 
-  
   useEffect(() => {
     addTotals();
   }, [cart]);
