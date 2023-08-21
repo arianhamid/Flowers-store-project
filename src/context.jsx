@@ -16,21 +16,34 @@ const AppProvider = ({ children }) => {
   useEffect(() => {
     initializeProductsState();
   }, []);
-
   function initializeProductsState() {
     const initialProducts = storeProducts.reduce((total, product) => {
       const singleItem = { ...product };
       return (total = [...total, singleItem]);
     }, []);
-
     // -- you can use forEach method instead of reduce method
     // let tempProducts = [];
     // storeProducts.forEach((product) => {
     //   const singleItem = { ...product };
     //   tempProducts = [...tempProducts, singleItem];
     // });
-
     setProducts(initialProducts);
+  }
+
+  useEffect(() => {
+    addTotals();
+  }, [cart]);
+  function addTotals() {
+    const subTotal = cart.reduce((total, product) => {
+      return (total += product.total);
+    }, 0);
+    const tempTax = 0.09 * subTotal;
+    //tiFixed method return a string so we use parseFloat
+    const tax = parseFloat(tempTax.toFixed(2));
+    const cartTotal = subTotal + tax;
+    setCartSubTotal(subTotal);
+    setCartTax(tax);
+    setCartTotal(cartTotal);
   }
 
   function addToCart(id) {
@@ -56,11 +69,11 @@ const AppProvider = ({ children }) => {
   }
 
   const openModal = (id) => {
-    console.log(id);
     setModalOpen(true);
     const modalProduct = products.find((product) => product.id == id);
     setModalProduct(modalProduct);
   };
+
   function increment(id) {
     const newProducts = products.map((product) => {
       if (product.id == id) {
