@@ -86,6 +86,14 @@ const AppProvider = ({ children }) => {
   }
 
   function removeItem(id) {
+    const newProducts = products.map((product) => {
+      if (product.id == id) {
+        product.count = 0;
+        product.inCart = false;
+      }
+      return product;
+    });
+    setProducts(newProducts);
     const newCart = cart.filter((product) => {
       return product.id !== id;
     });
