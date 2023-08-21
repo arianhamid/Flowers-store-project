@@ -6,15 +6,25 @@ const AppContext = createContext();
 const AppProvider = ({ children }) => {
   const [products, setProducts] = useState(storeProducts);
   const [detail, setDetail] = useState(detailProduct);
+  const [cart, setCart] = useState([]);
+  const [modalOpen, setModalOpen] = useState(false);
+  const [modalProduct, setModalProduct] = useState(detail);
+  const [cartSubTotal, setCartSubTotal] = useState(0);
+  const [cartTax, setCartTax] = useState(0);
+  const [cartTotal, setCartTotal] = useState(0);
 
   function addToCart(id) {
-    const newProduct = products.map((product) => {
+    const newProducts = products.map((product) => {
       if (product.id == id) {
-        product.inCart = !product.inCart;
+        product.inCart = true;
+        product.count = 1;
+        const price = product.price;
+        product.total = price;
+        setCart([...cart, product]);
       }
       return product;
     });
-    setProducts(newProduct);
+    setProducts(newProducts);
   }
 
   function handleDetail(id) {
@@ -22,8 +32,73 @@ const AppProvider = ({ children }) => {
     setDetail(detailProduct);
   }
 
+  function closeModal() {
+    setModalOpen(false);
+  }
+
+  const openModal = (id) => {
+    console.log(id);
+    setModalOpen(true);
+    const modalProduct = products.find((product) => product.id == id);
+    setModalProduct(modalProduct);
+  };
+  function increment(id) {
+    const newProducts = products.map((product) => {
+      if (product.id == id) {
+        product.count += 1;
+        const price = product.price;
+        product.total = price * product.count;
+      }
+      return product;
+    });
+    setProducts(newProducts);
+  }
+
+  function decrement(id) {
+    const newProducts = products.map((product) => {
+      if (product.id == id) {
+        product.count -= 1;
+        const price = product.price;
+        product.total = price * product.count;
+      }
+      return product;
+    });
+    setProducts(newProducts);
+  }
+
+  function removeItem(id) {
+    const newCart = cart.filter((product) => {
+      return product.id !== id;
+    });
+
+    setCart(newCart);
+  }
+
+  function clearCart() {
+    setCart([]);
+    setProducts(storeProducts);
+  }
   return (
-    <AppContext.Provider value={{ products, detail, handleDetail, addToCart }}>
+    <AppContext.Provider
+      value={{
+        products,
+        detail,
+        modalOpen,
+        modalProduct,
+        cart,
+        cartSubTotal,
+        cartTax,
+        cartTotal,
+        handleDetail,
+        addToCart,
+        openModal,
+        closeModal,
+        increment,
+        decrement,
+        removeItem,
+        clearCart,
+      }}
+    >
       {children}
     </AppContext.Provider>
   );

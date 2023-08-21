@@ -4,7 +4,7 @@ import { ButtonContainer } from "./Button";
 import { Link } from "react-router-dom";
 
 const Details = () => {
-  const { detail, addToCart } = useGlobalContext();
+  const { detail, addToCart, openModal, closeModal } = useGlobalContext();
   const { id, company, img, info, title, price, inCart } = detail;
 
   return (
@@ -43,7 +43,9 @@ const Details = () => {
             </Link>
             <ButtonContainer
               cart="cart"
-              onClick={() => addToCart(id)}
+              onClick={() => {
+                addToCart(id), openModal(id);
+              }}
               disabled={inCart ? true : false}
             >
               {inCart ? "incart" : "add to cart"}

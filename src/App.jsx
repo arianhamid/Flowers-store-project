@@ -6,7 +6,7 @@ import Details from "./components/Details";
 import Default from "./components/Default";
 import Cart from "./components/Cart";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-
+import Modal from "./components/Modal";
 
 function App() {
   return (
@@ -20,6 +20,7 @@ function App() {
             <Route path="*" element={<Default />} />
           </Route>
         </Routes>
+          <Modal />
       </BrowserRouter>
     </>
   );

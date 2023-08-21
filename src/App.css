@@ -21,5 +21,28 @@ body {
   color: var(--mainBlue);
 }
 
+.text-bright {
+  color: var(--lightBlue);
+}
+
 .text-slanted {
+}
+
+.btn-black {
+  text-transform: capitalize;
+  background-color: transparent;
+  color: var(--mainDark);
+  font-size: 0.8rem !important;
+  border-radius: 0 !important;
+  border: 0.1rem solid var(--mainDark) !important;
+}
+.btn-black:hover {
+  background: var(--mainDark) !important;
+  color: var(--mainWhite) !important;
+}
+
+.cart-icon {
+  font-size: 1.3rem !important;
+  cursor: pointer;
+  color: var(--mainYellow);
 }
