@@ -26,12 +26,14 @@ const CartItem = ({ title, img, price, id, count, total }) => {
           <div className="d-flex justify-content-center">
             <div>
               <span
-                className="btn btn-black mx-1"
+                className={`btn btn-black mx-1 ${
+                  count > 0 ? null : "disabled"
+                }`}
                 onClick={() => decrement(id)}
               >
                 -
               </span>
-              <span className="btn btn-black mx-1">{count}</span>
+              <span className="btn btn-black mx-1 disabled">{count}</span>
               <span
                 className="btn btn-black mx-1"
                 onClick={() => increment(id)}

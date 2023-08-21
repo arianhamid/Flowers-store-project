@@ -75,27 +75,25 @@ const AppProvider = ({ children }) => {
   };
 
   function increment(id) {
-    const newProducts = products.map((product) => {
+    const newCart = cart.map((product) => {
       if (product.id == id) {
         product.count += 1;
-        const price = product.price;
-        product.total = price * product.count;
+        product.total = product.price * product.count;
       }
       return product;
     });
-    setProducts(newProducts);
+    setCart(newCart);
   }
 
   function decrement(id) {
-    const newProducts = products.map((product) => {
+    const newCart = cart.map((product) => {
       if (product.id == id) {
         product.count -= 1;
-        const price = product.price;
-        product.total = price * product.count;
+        product.total = product.price * product.count;
       }
       return product;
     });
-    setProducts(newProducts);
+    setCart(newCart);
   }
 
   function removeItem(id) {
