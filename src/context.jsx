@@ -13,6 +13,7 @@ const AppProvider = ({ children }) => {
   const [cartTax, setCartTax] = useState(0);
   const [cartTotal, setCartTotal] = useState(0);
 
+  // this effect runs only at the start and setProducts to a copy of storeProducts from data.jsx and thats because when we initiate a state with a reference values like arrays or objects it cause to changing the storeProducts when we change products state  
   useEffect(() => {
     initializeProductsState();
   }, []);
@@ -30,6 +31,7 @@ const AppProvider = ({ children }) => {
     setProducts(initialProducts);
   }
 
+  
   useEffect(() => {
     addTotals();
   }, [cart]);
