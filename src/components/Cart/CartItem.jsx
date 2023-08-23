@@ -49,7 +49,7 @@ const CartItem = ({ title, img, price, id, count, total }) => {
           </div>
         </div>
         <div className="col-10 col-lg-2 my-2 mx-auto my-auto">
-          <strong>item total : $ {total}</strong>
+          <strong>item total : $ {parseFloat(total.toFixed(2))}</strong>
         </div>
       </div>
     </div>
