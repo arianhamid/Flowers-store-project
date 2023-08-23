@@ -48,13 +48,15 @@ const AppProvider = ({ children }) => {
     addTotals();
   }, [cart]);
   function addTotals() {
-    const subTotal = cart.reduce((total, product) => {
+    const tempSubTotal = cart.reduce((total, product) => {
       return (total += product.total);
     }, 0);
+    const subTotal = parseFloat(tempSubTotal.toFixed(2));
     const tempTax = 0.09 * subTotal;
     //tiFixed method return a string so we use parseFloat
     const tax = parseFloat(tempTax.toFixed(2));
-    const cartTotal = subTotal + tax;
+    const tempCartTotal = subTotal + tax;
+    const cartTotal = parseFloat(tempCartTotal.toFixed(2));
     setCartSubTotal(subTotal);
     setCartTax(tax);
     setCartTotal(cartTotal);
