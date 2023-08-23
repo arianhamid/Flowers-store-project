@@ -32,7 +32,7 @@ const Product = ({ id, title, img, price, inCart }) => {
         </div>
         <div className="card-footer d-flex justify-content-between">
           <p className="align-self-center mb-0">{title}</p>
-          <h5 className="text-blue font-italic mb-0">
+          <h5 className="text-purple font-italic mb-0">
             <span className="me-1">$</span>
             {price}
           </h5>
@@ -74,7 +74,7 @@ const ProductWrapper = styled.div`
     overflow: hidden;
   }
   .card-img-top {
-    transition: all 1s linear;
+    transition: all 0.5s linear;
   }
   .image-container:hover .card-img-top {
     transform: scale(1.2);
@@ -85,13 +85,13 @@ const ProductWrapper = styled.div`
     bottom: 0;
     right: 0;
     padding: 0.2rem 0.4rem;
-    background-color: var(--lightBlue);
+    background-color: var(--lightPurple);
     border: none;
     color: var(--mainWhite);
     font-size: 1.4rem;
     border-radius: 0.5rem 0 0 0;
     transform: translate(100%, 100%);
-    transition: all 1s ease-in-out;
+    transition: all 0.5s ease-in-out;
   }
   .image-container:hover .cart-btn {
     transform: translate(0, 0);

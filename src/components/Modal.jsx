@@ -12,11 +12,12 @@ const Modal = () => {
   }
   return (
     <ModalContainer>
-      <div className="container">
+      <div className="container-fluid container-danger" onClick={closeModal}>
         <div className="row">
           <div
             id="modal"
             className="col-8 col-md-6 col-lg-4 mx-auto p-5 text-center text-capitalize"
+            onClick={console.log("object")}
           >
             <h5>Item Added To The Cart</h5>
             <img src={img} alt="Product" className="img-fluid" />

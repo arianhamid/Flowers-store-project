@@ -3,19 +3,17 @@ import { Link, Outlet } from "react-router-dom";
 import image from "../logo.svg";
 import styled from "styled-components";
 import { ButtonContainer } from "./Button";
+import logo from "../favicon.ico";
+
 const Navbar = () => {
   return (
     <>
       <NavWrapper className="navbar navbar-expand-sm  bg-primary navbar-dark px-sm-5">
-        {/* https://www.iconfinder.com/icons/1243689/call_phone_icon Creative
-        Commons (Attribution 3.0 Unported);
-        https://www.iconfinder.com/Makoto_msk */}
+        {/*Icon Attribution https://stockio.com/
+        https://www.stockio.com/free-icon/gabriel-sunflower */}
+
         <Link to="/">
-          <img
-            src={image}
-            alt="store"
-            className="navbar-brand"
-          />
+          <img src={logo} alt="flower store" className="navbar-brand" />
         </Link>
         <ul className="navbar-nav align-items-center">
           <li className="nav-item ml-5">
@@ -24,8 +22,8 @@ const Navbar = () => {
             </Link>
           </li>
         </ul>
-        <Link to="cart" className="ms-auto">
-          <ButtonContainer>
+        <Link to="cart" className="ms-auto hvr-grow">
+          <ButtonContainer cart='cart'>
             <span className="me-2">
               <i className="fa fa-cart-plus" aria-hidden="true" />
             </span>
@@ -40,7 +38,23 @@ const Navbar = () => {
 
 // styled nav component
 const NavWrapper = styled.nav`
-background: var(--mainBlue) !important;
+// background: var(--mainBlue) !important;
+background-image: linear-gradient(to right, #7b319e, #772e97, #742b91, #70298a, #6c2684);
+.navbar-brand {
+  max-height: 2.5rem;
+  padding: 2px;
+  cursor: pointer;
+};
+.navbar-brand:hover {
+  animation-name: spin;
+  animation-duration: 4000ms;
+  animation-iteration-count: infinite;
+  animation-timing-function: linear;
+}
+@keyframes spin {
+  from {transform:rotate(0deg);}
+  to {transform:rotate(360deg);}
+}
 .nav-link{
 color: var(--mainWhite) !important;
 font-size: 1.3rem;

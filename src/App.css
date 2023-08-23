@@ -1,18 +1,28 @@
 :root {
-  --mainBlue: #2a2a72;
+  /* --mainBlue: #2a2a72;
   --lightBlue: #009ffd;
   --mainWhite: #f3f3f3;
   --mainDark: #232528;
-  --mainYellow: #ffa400;
+  --mainYellow: #ffa400; */
+  --mainPurple: #6c2684;
+  --lightPurple: #c493ff;
+  --mainWhite: #f3f3f3;
+  --mainDark: #232528;
+  --mainYellow: #fcc74f;
 }
+
 body {
-  font-family: "Oswald", sans-serif !important;
+  /* font-family: "Oswald", sans-serif !important;
+  background: var(--mainWhite) !important;
+  color: var(--mainDark) !important; */
+  font-family: "Libre Baskerville", serif !important;
   background: var(--mainWhite) !important;
   color: var(--mainDark) !important;
 }
 
 .text-title {
-  font-family: "Permanent Marker", cursive;
+  /* font-family: "Permanent Marker", cursive;*/
+  font-family: "Amita", cursive;
   letter-spacing: 0.3rem;
   text-transform: uppercase;
 }
@@ -21,11 +31,30 @@ body {
   color: var(--mainBlue);
 }
 
-.text-bright {
-  color: var(--lightBlue);
+.text-purple {
+  color: var(--mainPurple);
 }
 
-.text-slanted {
+.text-bright {
+  /* color: var(--lightBlue); */
+  color: var(--lightPurple);
+}
+
+/* Grow from hover.css package */
+.hvr-grow {
+  display: inline-block;
+  vertical-align: middle;
+  transform: translateZ(0);
+  box-shadow: 0 0 1px rgba(0, 0, 0, 0);
+  backface-visibility: hidden;
+  -moz-osx-font-smoothing: grayscale;
+  transition-duration: 0.3s;
+  transition-property: transform;
+}
+*/ .hvr-grow:hover,
+.hvr-grow:focus,
+.hvr-grow:active {
+  transform: scale(1.1);
 }
 
 .btn-black {
